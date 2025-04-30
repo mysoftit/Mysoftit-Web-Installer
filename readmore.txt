@@ -1,0 +1,17 @@
+///Register the service provider in your Laravel application's config/app.php
+
+'providers' => [
+    // ...
+    MySoftITWebInstaller\MysoftyitWebInstallerServiceProvider::class,
+];
+
+///Publish assets:
+
+php artisan vendor:publish --tag=public --provider="MySoftITWebInstaller\MysoftyitWebInstallerServiceProvider"
+
+//Add the middleware alias to your app/Http/Kernel.php
+
+protected $middlewareAliases = [
+    // ...
+    'can_install' => \MySoftITWebInstaller\Middleware\CanInstall::class,
+];
